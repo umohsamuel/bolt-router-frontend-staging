@@ -1,0 +1,10 @@
+{
+  "extends": ["next/core-web-vitals", "next/typescript", "prettier"],
+  "plugins": [
+    "import"
+  ],
+    "rules": {
+    "react-hooks/exhaustive-deps": "off",
+     "import/no-cycle": ["error", { "maxDepth": "∞" }]
+  }
+}
