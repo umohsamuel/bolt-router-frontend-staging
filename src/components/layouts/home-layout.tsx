@@ -8,7 +8,7 @@ export default function HomeLayout({
   return (
     <div className="bg-gradient-to-b from-[#080A18]/[0%] to-[#080A18] to-45%">
       <Navbar />
-      <div className="pt-[60px]">{children}</div>
+      <div className="min-h-screen">{children}</div>
       <HorizontalDivider />
       <Footer />
     </div>

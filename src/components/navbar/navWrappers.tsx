@@ -66,7 +66,7 @@ export const NavScrollWrapper: FC<NavScrollWrapperProps> = ({ children }) => {
             : "translateY(0)",
         transition: "transform 0.35s ease-in-out",
       }}
-      className={`fixed left-0 top-0 z-[9999] flex h-[60px] w-full items-center justify-center px-[5%] text-sm`}
+      className={`fixed left-0 top-0 z-[9999] flex h-[60px] w-full items-center justify-center bg-transparent px-[5%] text-sm`}
     >
       <div className="flex w-full items-center justify-between lg:items-end">
         {children}
