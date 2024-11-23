@@ -1,10 +1,11 @@
 import { HomeLayout } from "@/components/layouts";
-import { HeroHome } from "@/components/screens";
+import { HeroHome, IntroductionHome } from "@/components/screens";
 
 export default function Home() {
   return (
     <HomeLayout>
       <HeroHome />
+      <IntroductionHome />
     </HomeLayout>
   );
 }
