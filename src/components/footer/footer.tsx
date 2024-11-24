@@ -23,7 +23,9 @@ export default function Footer() {
                 target="_blank"
                 className="cursor-pointer rounded-full bg-[#131A2A] p-2"
               >
-                {smLink.icon}
+                {smLink.icon && (
+                  <smLink.icon size={14} color="#DCDCE4" aria-disabled={true} />
+                )}
               </Link>
             ))}
           </div>

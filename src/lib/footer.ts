@@ -1,4 +1,4 @@
-import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Facebook, Twitter, Linkedin, Instagram, type LucideIcon } from "lucide-react";
 
 export const footerLinksArr = [
   {
@@ -29,21 +29,26 @@ export const footerLinksArr = [
   },
 ];
 
+interface SocialMediaLinksItems{
+  icon: LucideIcon;
+  link: string;
+}
+
 export const socialMediaLinks = [
   {
-    icon: <Facebook size={14} color="#DCDCE4" aria-disabled={true} />,
+    icon: Facebook,
     link: "#",
   },
   {
-    icon: <Twitter size={14} color="#DCDCE4" aria-disabled={true} />,
+    icon: Twitter,
     link: "#",
   },
   {
-    icon: <Linkedin size={14} color="#DCDCE4" aria-disabled={true} />,
+    icon: Linkedin,
     link: "#",
   },
   {
-    icon: <Instagram size={14} color="#DCDCE4" aria-disabled={true} />,
+    icon: Instagram,
     link: "#",
   },
-];
+] satisfies SocialMediaLinksItems[];
