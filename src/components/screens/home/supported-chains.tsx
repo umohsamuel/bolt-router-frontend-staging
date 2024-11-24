@@ -3,7 +3,7 @@ import Marquee from "react-fast-marquee";
 
 export default function SupportedChains() {
   return (
-    <div className="flex flex-col gap-6 px-[5%]">
+    <div className="my-20 flex flex-col gap-6 px-[5%]">
       <h1 className="text-center text-[22px] font-medium leading-tight text-[##DCDCE4]">
         Supported chains
       </h1>

@@ -1,9 +1,11 @@
 import { HomeLayout } from "@/components/layouts";
 import {
   FeaturesHome,
+  GetStarted,
   HeroHome,
   IntroductionHome,
   KeyMetricsHome,
+  ProtocolIntregration,
   SupportedChains,
 } from "@/components/screens";
 
@@ -15,6 +17,8 @@ export default function Home() {
       <KeyMetricsHome />
       <FeaturesHome />
       <SupportedChains />
+      <ProtocolIntregration />
+      <GetStarted />
     </HomeLayout>
   );
 }
