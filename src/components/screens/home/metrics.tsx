@@ -8,7 +8,7 @@ export default function KeyMetricsHome() {
 
       <div className="mt-8 flex flex-wrap items-center justify-center gap-x-16 gap-y-5">
         {metrics.map((metric) => (
-          <div key={metric.title}>
+          <div key={metric.title} className="flex flex-col gap-3">
             <PageMainSubHeader
               content={metric.title}
               className="text-left lg:text-xs"

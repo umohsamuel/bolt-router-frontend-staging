@@ -13,6 +13,9 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        "oakes-grotesk": ['var(--font-oakes-grotesk)', 'sans-serif'],
+      }
     },
   },
   plugins: [containerQueries],

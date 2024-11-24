@@ -9,7 +9,7 @@ export function PageMainHeader({ content, className }: PageMainHeaderProps) {
   return (
     <h1
       className={cn(
-        `text-center text-3xl font-semibold text-[#DCDCE4] lg:text-5xl xl:text-6xl`,
+        `text-center text-3xl font-semibold text-[#DCDCE4] lg:text-5xl 2xl:text-6xl`,
         className
       )}
     >

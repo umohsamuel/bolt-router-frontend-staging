@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Oakes_Grotesk } from "@/fonts";
 
 export const metadata: Metadata = {
   title: "Bolt Router",
@@ -16,7 +17,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>{children}</body>
+      <body
+        className={`${Oakes_Grotesk.variable} font-oakes-grotesk antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
