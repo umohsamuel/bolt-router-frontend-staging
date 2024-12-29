@@ -1,4 +1,4 @@
-import { MenuItem } from "@/types/navbar";
+import { MenuItem } from "@/types";
 
 export const navLinks: MenuItem[] =  [
   { title: "About", link: "/about" },

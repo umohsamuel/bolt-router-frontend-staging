@@ -6,10 +6,14 @@ import { NavBurger } from "./navburger";
 import { MobileDrawer } from "./mobileDrawer";
 
 interface NavScrollWrapperProps {
-  children: React.ReactNode;
+  children: Readonly<React.ReactNode>;
+  mainBackgroundColor?: string;
 }
 
-export const NavScrollWrapper: FC<NavScrollWrapperProps> = ({ children }) => {
+export const NavScrollWrapper: FC<NavScrollWrapperProps> = ({
+  children,
+  mainBackgroundColor = "transparent",
+}) => {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const myref = useRef<HTMLDivElement>(null);
@@ -73,8 +77,9 @@ export const NavScrollWrapper: FC<NavScrollWrapperProps> = ({ children }) => {
             ? "translateY(-100%)"
             : "translateY(0)",
         transition: "transform 0.35s ease-in-out",
+        backgroundColor: open ? "black" : mainBackgroundColor,
       }}
-      className={`fixed left-0 top-0 z-[9999] flex h-[60px] w-full items-center justify-center ${open ? "bg-black" : "bg-transparent"} px-[5%] text-sm`}
+      className={`fixed left-0 top-0 z-[50] flex h-[60px] w-full items-center justify-center px-[5%] text-sm`}
     >
       <div className="flex w-full items-center justify-between lg:items-end">
         {children}

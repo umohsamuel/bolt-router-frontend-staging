@@ -51,8 +51,8 @@ export default function Footer() {
 }
 
 interface FooterLinkItemProps {
-  title: string;
-  links: Array<{ linkTitle: string; linkUrl: string }>;
+  title: Readonly<string>;
+  links: ReadonlyArray<{ linkTitle: string; linkUrl: string }>;
 }
 
 const FooterLinkItem: FC<FooterLinkItemProps> = ({ title, links }) => {

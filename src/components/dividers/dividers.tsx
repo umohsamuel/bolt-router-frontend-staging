@@ -1,7 +1,7 @@
 import { cn } from "@/utils";
 
 interface HorizontalDividerProps {
-  className?: string;
+  className?: Readonly<string>;
 }
 
 export default function HorizontalDivider({

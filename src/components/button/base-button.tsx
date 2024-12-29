@@ -16,7 +16,7 @@ export default function BaseButton({
         href={link}
         target={target}
         className={cn(
-          `flex items-center justify-center rounded-xl bg-[#366CF0] px-4 py-3 text-base font-bold text-white`,
+          `flex w-fit items-center justify-center rounded-xl border-transparent bg-[#366CF0] bg-gradient-to-r from-[#366CF0] via-[#356BF0] to-[#366CF0] px-4 py-3 text-base font-bold text-white shadow-[0px_20px_16px_-8px_rgba(4,163,227,0.38)] before:absolute before:inset-0 before:-z-10 before:rounded-xl`,
           className
         )}
       >
@@ -28,7 +28,7 @@ export default function BaseButton({
     return (
       <button
         className={cn(
-          `flex items-center justify-center rounded-xl bg-[#366CF0] px-4 py-3 text-base font-bold text-white`,
+          `flex w-fit items-center justify-center rounded-xl border-transparent bg-[#366CF0] bg-gradient-to-r from-[#366CF0] via-[#356BF0] to-[#366CF0] px-4 py-3 text-base font-bold text-white shadow-[0px_20px_16px_-8px_rgba(4,163,227,0.38)] before:absolute before:inset-0 before:-z-10 before:rounded-xl`,
           className
         )}
         {...props}

@@ -2,7 +2,7 @@
 import { FC, PropsWithChildren, useEffect, useRef } from "react";
 
 interface MobileDrawerWrapperProps {
-  open: boolean;
+  open: Readonly<boolean>;
 }
 
 export const MobileDrawerWrapper: FC<

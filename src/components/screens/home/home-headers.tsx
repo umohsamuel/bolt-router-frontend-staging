@@ -1,8 +1,8 @@
 import { cn } from "@/utils";
 
 interface PageMainHeaderProps {
-  content: string;
-  className?: string;
+  content: Readonly<string>;
+  className?: Readonly<string>;
 }
 
 export function PageMainHeader({ content, className }: PageMainHeaderProps) {

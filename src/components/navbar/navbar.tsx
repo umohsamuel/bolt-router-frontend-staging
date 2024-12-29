@@ -1,14 +1,33 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { NavScrollWrapper } from "./navWrappers";
 import { navLinks } from "@/lib";
-import { BaseButton } from "../button";
+import { ConnectWalletBtn } from "../button";
 import { ChainItem } from "./chain-item";
+import { cn } from "@/utils";
+import { usePathname } from "next/navigation";
 
-export default function Navbar() {
+interface NavbarProps {
+  className?: Readonly<string>;
+  mainBackgroundColor?: Readonly<string>;
+}
+
+export default function Navbar({
+  className,
+  mainBackgroundColor,
+}: NavbarProps) {
+  const pathname = usePathname();
+
   return (
-    <NavScrollWrapper>
-      <div className="flex w-full items-center justify-between py-3">
+    <NavScrollWrapper mainBackgroundColor={mainBackgroundColor}>
+      <div
+        className={cn(
+          `flex w-full items-center justify-between py-3`,
+          className
+        )}
+      >
         <div>
           <Link href="/">
             <Image
@@ -27,7 +46,7 @@ export default function Navbar() {
               <Link
                 href={navlink.link}
                 key={navlink.title}
-                className="hover:text-[#366CF0]"
+                className={`hover:text-[#366CF0] ${pathname === navlink.link ? "text-[#366CF0]" : ""}`}
               >
                 {navlink.title}
               </Link>
@@ -38,7 +57,8 @@ export default function Navbar() {
             name="BNB Chain"
             className="hidden lg:flex"
           />
-          <BaseButton text="Connect Wallet" className="hidden lg:flex" />
+
+          <ConnectWalletBtn className="hidden lg:flex" />
         </div>
       </div>
     </NavScrollWrapper>

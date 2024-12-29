@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 export interface NavBurgerProps {
-  open: boolean;
+  open: Readonly<boolean>;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 

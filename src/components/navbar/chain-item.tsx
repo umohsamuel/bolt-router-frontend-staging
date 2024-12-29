@@ -3,9 +3,9 @@ import Image from "next/image";
 import { FC } from "react";
 
 interface ChainItemProps {
-  logoURL: string;
-  name: string;
-  className?: string;
+  logoURL: Readonly<string>;
+  name: Readonly<string>;
+  className?: Readonly<string>;
 }
 
 export const ChainItem: FC<ChainItemProps> = ({ logoURL, name, className }) => {

@@ -28,11 +28,11 @@ export default function GetStarted() {
 }
 
 interface StartedItemProps {
-  title: string;
-  description: string;
-  link: string;
-  linkLabel: string;
-  className?: string;
+  title: Readonly<string>;
+  description: Readonly<string>;
+  link: Readonly<string>;
+  linkLabel: Readonly<string>;
+  className?: Readonly<string>;
 }
 
 const StartedItem = ({

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function HeroHome() {
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center gap-10 bg-gradient-to-b from-[#202738] to-[#070816] px-[5%] pt-[60px] lg:flex-row lg:justify-between lg:gap-0">
+    <div className="relative flex min-h-screen flex-col items-center justify-center gap-10 bg-gradient-to-b from-[#202738] to-[#070816] px-[5%] pt-[60px] text-[#CDCDCD] lg:flex-row lg:justify-between lg:gap-0">
       <Image
         src="/vectors/home-vector-1.svg"
         alt=""
@@ -21,7 +21,11 @@ export default function HeroHome() {
           transparency. Powered by the best cross-chain protocols.
         </p>
 
-        <BaseButton text="Start Swapping Now" className="mt-8" />
+        <BaseButton
+          text="Start Swapping Now"
+          className="mt-8"
+          link="/protocol"
+        />
       </div>
       <div className="w-full lg:max-w-[35%]">
         <Image
