@@ -6,6 +6,7 @@ import { createAppKit } from "@reown/appkit/react";
 import { mainnet, arbitrum } from "@reown/appkit/networks";
 import React, { type ReactNode } from "react";
 import { cookieToInitialState, WagmiProvider, type Config } from "wagmi";
+// import { ClientOnly } from "@/components/layouts";
 
 const queryClient = new QueryClient();
 
@@ -16,7 +17,7 @@ if (!projectId) {
 const metadata = {
   name: "Bolt Router",
   description: "The Seamless Cross-Chain Swaps",
-  url: "https://appkitexampleapp.com",
+  url: "http://localhost:3000",
   icons: ["/images/favicon.svg"],
 };
 
@@ -24,7 +25,7 @@ export const appKitModalInstance = createAppKit({
   adapters: [wagmiAdapter],
   projectId,
   networks: [mainnet, arbitrum],
-  defaultNetwork: mainnet,
+  // defaultNetwork: mainnet,
   metadata: metadata,
   features: {
     analytics: true,
@@ -34,24 +35,25 @@ export const appKitModalInstance = createAppKit({
 
 function WagmiContextProvider({
   children,
-  cookies,
+  // cookies,
 }: {
   children: ReactNode;
   cookies: string | null;
 }) {
-  const decodedCookies = cookies ? decodeURIComponent(cookies) : null;
   const initialState = cookieToInitialState(
-    wagmiAdapter.wagmiConfig as Config,
-    decodedCookies
+    wagmiAdapter.wagmiConfig as Config
+    // cookies
   );
 
   return (
+    // <ClientOnly>
     <WagmiProvider
       config={wagmiAdapter.wagmiConfig as Config}
       initialState={initialState}
     >
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </WagmiProvider>
+    // </ClientOnly>
   );
 }
 

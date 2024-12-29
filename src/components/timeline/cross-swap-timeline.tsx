@@ -5,7 +5,7 @@ import { TimelineElement, VerticalTimeline } from "./base-timeline";
 import { crossSwapSteps } from "@/lib";
 
 export default function CrossSwapTimeline() {
-  const currentStep = useCrossSwapStore((state) => state.timelineCurrentStep);
+  const currentStep = useCrossSwapStore((state) => state.timelineStep);
 
   return (
     <div>

@@ -1,8 +1,8 @@
-import { createStore } from 'zustand/vanilla'
+import { createStore } from 'zustand/vanilla';
+import { persist } from 'zustand/middleware'
 
 export type CrossSwapState = {
- timelineCurrentStep: number;
-
+ timelineStep: number;
 }
 
 export type CrossSwapActions = {
@@ -15,22 +15,27 @@ export type CrossSwapActions = {
 export type CrossSwapStore = CrossSwapState & CrossSwapActions
 
 export const initCrossSwapStore = (): CrossSwapState => {
-  return { timelineCurrentStep: 0 }
+  return { timelineStep: 1 }
 }
 
 export const defaultInitState: CrossSwapState = {
-  timelineCurrentStep: 0,
+  timelineStep: 1,
 }
 
 export const createCrossSwapStore = (
   initState: CrossSwapState = defaultInitState,
 ) => {
-  return createStore<CrossSwapStore>()((set) => ({
+  return createStore<CrossSwapStore>()(persist((set) => ({
     ...initState,
     setCrossSwapStore: (field, valueOrUpdater) => set((state) => ({
      [field]: typeof valueOrUpdater === 'function'
        ? valueOrUpdater(state[field])
        : valueOrUpdater
     } as Pick<CrossSwapState, typeof field>))
-  }))
+  }),
+    {
+      name: 'cross-swap-storage', 
+    },
+  ),
+)
 }
