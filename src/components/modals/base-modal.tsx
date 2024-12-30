@@ -3,7 +3,7 @@
 import ReactDOM from "react-dom";
 import { X } from "lucide-react";
 import { ModalProps } from "@/types";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 interface BaseModalProps extends ModalProps {
   children: Readonly<React.ReactNode>;
@@ -28,12 +28,24 @@ export default function BaseModal({
     setIsOpen(false);
   }
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+
+    return () => {
+      document.body.classList.remove("no-scroll");
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return ReactDOM.createPortal(
     <div
       onClick={handleClickOutside}
-      className="fixed inset-0 z-30 flex h-screen w-full items-center justify-center bg-black/50 px-[5%] backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex h-screen w-full items-center justify-center bg-black/50 px-[5%] backdrop-blur-sm"
     >
       <div
         ref={modalRef}

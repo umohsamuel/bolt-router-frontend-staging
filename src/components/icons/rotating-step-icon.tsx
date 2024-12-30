@@ -71,7 +71,7 @@ export default function RotatingStepIcon({
             }}
             className="absolute inset-0 flex items-center justify-center"
           >
-            <span className="font-sans text-xs font-semibold text-white">
+            <span className="font-mono text-xs font-semibold text-white">
               {step}
             </span>
           </motion.div>

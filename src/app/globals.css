@@ -14,3 +14,19 @@ w3m-modal {
 /* wui-card {
   z-index: 1050 !important; 
 } */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.no-scroll {
+  overflow: hidden !important;
+  width: 100%;
+  height: 100%;
+}

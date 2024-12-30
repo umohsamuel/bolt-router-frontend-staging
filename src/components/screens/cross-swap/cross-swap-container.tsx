@@ -3,13 +3,16 @@
 import { BaseButton, ConnectWalletBtn } from "@/components/button";
 import { useCrossSwapStore } from "@/zustand/providers";
 import { useAppKitAccount } from "@reown/appkit/react";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import CrossSwapInput from "./cross-swap-input-item";
 import Image from "next/image";
 
 export default function CrossSwapContainer() {
-  const { isConnected } = useAppKitAccount();
+  const { isConnected, status } = useAppKitAccount();
   const setTimelineStep = useCrossSwapStore((state) => state.setCrossSwapStore);
+
+  const [fromAmount, setFromAmount] = useState<number>(0.0);
+  const [toAmount, setToAmount] = useState<number>(0.0);
 
   const handleNextStep = useCallback(() => {
     setTimelineStep("timelineStep", (prev) => prev + 1);
@@ -18,7 +21,11 @@ export default function CrossSwapContainer() {
   return (
     <div className="flex w-full flex-col gap-10 rounded-xl bg-[#131A2A] p-10">
       <div className="flex w-full flex-col gap-4">
-        <CrossSwapInput swapAction="from" />
+        <CrossSwapInput
+          swapAction="from"
+          value={fromAmount}
+          setValue={setFromAmount}
+        />
         <div className="flex justify-center">
           <Image
             src="/vectors/down-arrow.svg"
@@ -28,10 +35,14 @@ export default function CrossSwapContainer() {
             draggable={false}
           />
         </div>
-        <CrossSwapInput swapAction="to" />
+        <CrossSwapInput
+          swapAction="to"
+          value={toAmount}
+          setValue={setToAmount}
+        />
       </div>
 
-      {isConnected ? (
+      {isConnected && status !== "reconnecting" && status !== "connecting" ? (
         <BaseButton
           text="Continue"
           className="w-full"

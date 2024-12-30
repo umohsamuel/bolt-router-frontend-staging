@@ -7,6 +7,7 @@ import {
 } from "@reown/appkit/react";
 import BaseButton from "./base-button";
 import { cn, formatWalletAddress } from "@/utils";
+import { LogOut } from "lucide-react";
 
 interface ConnectWalletBtnProps {
   className?: Readonly<string>;
@@ -26,11 +27,12 @@ export default function ConnectWalletBtn({
       <BaseButton
         text={address ? formatWalletAddress(address) : text}
         className={cn(
-          `bg-red-500 bg-gradient-to-r from-red-500 to-red-500`,
+          `flex flex-row-reverse items-center gap-2 font-mono text-sm font-bold`,
           className
         )}
         onClick={async () => await disconnect()}
         isLoading={status === "connecting" || status === "reconnecting"}
+        icon={<LogOut size={18} color="white" />}
       />
     );
   }
