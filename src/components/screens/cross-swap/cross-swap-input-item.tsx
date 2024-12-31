@@ -19,7 +19,9 @@ export default function CrossSwapInput({
   setValue,
 }: CrossSwapInputProps) {
   const [openTokenModal, setOpenTokenModal] = useState(false);
+  const [selectedNetwork, setSelectedNetwork] = useState("");
   const [selectedToken, setSelectedToken] = useState("");
+
   // const { connector, address } = useAccount();
   const { address } = useAccount();
   const { data: balance } = useBalance({ address });
@@ -30,20 +32,37 @@ export default function CrossSwapInput({
     }
   }, [balance]);
 
+  const onNetworkSelect = useCallback((network: string) => {
+    setSelectedNetwork(network);
+  }, []);
+
+  const onTokenSelect = useCallback((token: string) => {
+    setSelectedToken(token);
+    setOpenTokenModal(false);
+  }, []);
+
   return (
     <div className="flex w-full flex-col gap-3">
       <div className="flex items-center justify-between">
         <p className="flex items-center gap-2">
           <span className="capitalize">{swapAction}</span>
-          <span>--</span>
+          <span>{selectedNetwork || "--"}</span>
         </p>
 
-        <button
-          onClick={() => setOpenTokenModal(true)}
-          className="flex items-center gap-1 text-sm font-semibold text-[#DCDCE4]"
-        >
-          Select Token <ChevronDown size={18} color="white" />
-        </button>
+        {
+          <button
+            onClick={() => setOpenTokenModal(true)}
+            className="flex items-center gap-1 text-sm font-semibold text-[#DCDCE4]"
+          >
+            {selectedToken ? (
+              selectedToken
+            ) : (
+              <>
+                Select Token <ChevronDown size={18} color="white" />
+              </>
+            )}
+          </button>
+        }
       </div>
       <div className="h-16 w-full rounded-xl bg-[#192134] text-sm font-normal text-[#9B9B9B]">
         <input
@@ -65,7 +84,9 @@ export default function CrossSwapInput({
         isOpen={openTokenModal}
         setIsOpen={setOpenTokenModal}
         selectedToken={selectedToken}
-        setSelectedToken={setSelectedToken}
+        selectedNetwork={selectedNetwork}
+        onNetworkSelect={onNetworkSelect}
+        onTokenSelect={onTokenSelect}
       />
     </div>
   );

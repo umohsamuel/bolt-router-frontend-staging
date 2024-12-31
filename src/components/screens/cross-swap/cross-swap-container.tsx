@@ -15,7 +15,9 @@ export default function CrossSwapContainer() {
   const [toAmount, setToAmount] = useState<number>(0.0);
 
   const handleNextStep = useCallback(() => {
-    setTimelineStep("timelineStep", (prev) => prev + 1);
+    const MIN = 1;
+    const MAX = 5;
+    setTimelineStep("timelineStep", (prev) => (prev >= MAX ? MIN : prev + 1));
   }, []);
 
   return (

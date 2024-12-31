@@ -1,13 +1,12 @@
 "use client";
 
-import {
-  useAppKit,
-  useAppKitAccount,
-  useDisconnect,
-} from "@reown/appkit/react";
+import { useAppKit, useAppKitAccount } from "@reown/appkit/react";
 import BaseButton from "./base-button";
-import { cn, formatWalletAddress } from "@/utils";
-import { LogOut } from "lucide-react";
+import { cn, formatBalance, formatWalletAddress } from "@/utils";
+// import { LogOut } from "lucide-react";
+import { useAccount, useBalance } from "wagmi";
+import { AddressDetailsModal } from "../modals";
+import { useState } from "react";
 
 interface ConnectWalletBtnProps {
   className?: Readonly<string>;
@@ -18,22 +17,36 @@ export default function ConnectWalletBtn({
   className,
   text = "Connect Wallet",
 }: ConnectWalletBtnProps) {
-  const { address, isConnected, status } = useAppKitAccount();
+  const { isConnected, status } = useAppKitAccount();
+  const { address } = useAccount();
   const { open } = useAppKit();
-  const { disconnect } = useDisconnect();
+  const { data: balance } = useBalance({
+    address,
+  });
+  const [openAddressDetails, setOpenAddressDetails] = useState(false);
 
   if (isConnected) {
     return (
-      <BaseButton
-        text={address ? formatWalletAddress(address) : text}
-        className={cn(
-          `flex flex-row-reverse items-center gap-2 font-mono text-sm font-bold`,
-          className
-        )}
-        onClick={async () => await disconnect()}
-        isLoading={status === "connecting" || status === "reconnecting"}
-        icon={<LogOut size={18} color="white" />}
-      />
+      <div className="flex items-center gap-3 rounded-xl bg-[#131A2A] p-1">
+        <span className="pl-2 font-mono text-sm font-bold text-white">
+          {balance &&
+            `${formatBalance(balance.value, balance.decimals)} ${balance.symbol}`}
+        </span>
+        <BaseButton
+          text={address ? formatWalletAddress(address) : text}
+          className={cn(
+            `flex flex-row-reverse items-center gap-2 font-mono text-sm font-bold`,
+            className
+          )}
+          onClick={() => setOpenAddressDetails(true)}
+          isLoading={status === "connecting" || status === "reconnecting"}
+          // icon={<LogOut size={18} color="white" />}
+        />
+        <AddressDetailsModal
+          isOpen={openAddressDetails}
+          setIsOpen={setOpenAddressDetails}
+        />
+      </div>
     );
   }
 

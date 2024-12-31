@@ -5,4 +5,5 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   target?: React.HTMLAttributeAnchorTarget;
   className?: Readonly<string>;
   isLoading?: Readonly<boolean>;
+  loader?: Readonly<React.ReactNode>;
 }

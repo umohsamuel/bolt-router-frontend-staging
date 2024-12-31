@@ -29,12 +29,12 @@ export function InlineCircularLoader({
   className,
 }: PageCircularLoaderProps) {
   return (
-    <div className="flex w-full items-center justify-center">
+    <span className="flex w-full items-center justify-center">
       <LoaderCircle
         size={size}
         color={color}
         className={cn(`animate-spin`, className)}
       />
-    </div>
+    </span>
   );
 }

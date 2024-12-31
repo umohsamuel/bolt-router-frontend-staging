@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import { WagmiContextProvider } from "@/context";
 import { headers } from "next/headers";
 import { CrossSwapStoreProvider } from "@/zustand/providers";
+import { toastOptions } from "@/consts";
 
 export const metadata: Metadata = {
   title: "Bolt Router",
@@ -27,7 +28,7 @@ export default async function RootLayout({
       <body
         className={`${Oakes_Grotesk.variable} font-oakes-grotesk text-[#DCDCE4] antialiased`}
       >
-        <Toaster />
+        <Toaster toastOptions={toastOptions} />
         <CrossSwapStoreProvider>
           <WagmiContextProvider cookies={cookies}>
             {children}

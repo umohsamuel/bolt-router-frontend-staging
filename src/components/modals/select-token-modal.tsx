@@ -1,3 +1,5 @@
+"use client";
+
 import { ModalProps } from "@/types";
 import BaseModal from "./base-modal";
 import { Search } from "lucide-react";
@@ -5,52 +7,93 @@ import Image from "next/image";
 
 interface SelectTokenModalProps extends ModalProps {
   selectedToken: string;
-  setSelectedToken: React.Dispatch<React.SetStateAction<string>>;
+  selectedNetwork: string;
+
+  onNetworkSelect: (network: string) => void;
+  onTokenSelect: (token: string) => void;
 }
 
 export default function SelectTokenModal({
   isOpen,
   setIsOpen,
   selectedToken,
-  setSelectedToken,
+  selectedNetwork,
+  onNetworkSelect,
+  onTokenSelect,
 }: SelectTokenModalProps) {
   return (
     <BaseModal isOpen={isOpen} setIsOpen={setIsOpen} title="Select Token">
       <div className="flex w-full flex-col gap-[30px] pr-2">
         <SelectTokenSearchInput placeholder="Search Token Name / Symbol / Contract Address" />
-        <SelectTokenLayout />
+        <SelectTokenLayout
+          selectedNetwork={selectedNetwork}
+          selectedToken={selectedToken}
+          onNetworkSelect={onNetworkSelect}
+          onTokenSelect={onTokenSelect}
+        />
       </div>
     </BaseModal>
   );
 }
 
-function SelectTokenLayout() {
+interface SelectTokenLayoutProps {
+  selectedToken: string;
+  selectedNetwork: string;
+
+  onNetworkSelect: (network: string) => void;
+  onTokenSelect: (token: string) => void;
+}
+
+function SelectTokenLayout({
+  selectedToken,
+  selectedNetwork,
+  onNetworkSelect,
+  onTokenSelect,
+}: SelectTokenLayoutProps) {
   return (
     <div className="relative flex w-full gap-6">
       <div className="sticky top-0 flex h-full w-full max-w-[94px] shrink-0 flex-col gap-5 rounded-xl bg-[#192134] px-4 py-[18px]">
         {Array.from({ length: 4 }).map((_, index) => (
-          <NetworkItem key={index} />
+          <NetworkItem
+            key={index}
+            selected={selectedNetwork === "this nework " + index}
+            onClick={() => onNetworkSelect("this nework " + index)}
+          />
         ))}
       </div>
 
-      <div className="w-full">
-        <h2 className="text-base font-semibold text-[#DCDCE4]">
-          Ethereum Network
-        </h2>
+      {selectedNetwork && (
+        <div className="w-full">
+          <h2 className="text-base font-semibold text-[#DCDCE4]">
+            Ethereum Network
+          </h2>
 
-        <div className="mt-[10px] flex flex-col gap-4">
-          {Array.from({ length: 20 }).map((_, index) => (
-            <TokenItem key={index} />
-          ))}
+          <div className="mt-[10px] flex flex-col gap-4">
+            {Array.from({ length: 20 }).map((_, index) => (
+              <TokenItem
+                key={index}
+                selected={selectedToken === "this token " + index}
+                onClick={() => onTokenSelect("this token " + index)}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
 
-function TokenItem() {
+interface TokenItemProps {
+  selected?: boolean;
+  onClick?: () => void;
+}
+
+function TokenItem({ onClick, selected }: TokenItemProps) {
   return (
-    <div className="flex items-center gap-3 rounded-lg bg-[#192134] px-6 py-[10px]">
+    <div
+      onClick={onClick}
+      className={`flex items-center gap-3 rounded-lg bg-[#192134] px-6 py-[10px] ${selected && "border border-solid border-[#366CF0]"}`}
+    >
       <Image
         src="/images/favicon.svg"
         alt="Network Logo"
