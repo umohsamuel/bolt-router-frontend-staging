@@ -17,7 +17,9 @@ if (!projectId) {
 const metadata = {
   name: "Bolt Router",
   description: "The Seamless Cross-Chain Swaps",
-  url: "http://localhost:3000",
+  url: (process.env.NODE_ENV === "production"
+    ? process.env.NEXT_PUBLIC_PRODUCTION_URL
+    : process.env.NEXT_PUBLIC_DEVELOPMENT_URL) as string,
   icons: ["/images/favicon.svg"],
 };
 

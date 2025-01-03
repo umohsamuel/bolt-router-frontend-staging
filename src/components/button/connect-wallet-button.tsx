@@ -28,7 +28,12 @@ export default function ConnectWalletBtn({
   if (isConnected) {
     return (
       <ClientOnly>
-        <div className="flex items-center gap-3 rounded-xl bg-[#131A2A] p-1">
+        <div
+          className={cn(
+            `flex items-center gap-3 rounded-xl bg-[#131A2A] p-1`,
+            className
+          )}
+        >
           <span className="flex shrink-0 items-center gap-2 pl-2 font-mono text-sm font-bold text-white">
             {balance &&
               `${formatBalance(balance.value, balance.decimals)} ${balance.symbol}`}

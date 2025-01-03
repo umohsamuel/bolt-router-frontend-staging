@@ -23,17 +23,14 @@ export const TimelineElement: React.FC<TimelineElementProps> = ({
   icon,
   iconBackground = "#3b82f6",
   // date,
-  position = "right",
+  // position = "right",
   contentStyle,
   iconStyle,
   className = "",
 }) => {
   return (
-    <div
-      className={`mb-8 flex w-full items-center justify-between last:mb-0 ${position === "right" ? "flex-row-reverse" : ""} ${className}`}
-    >
-      <div className="order-1 w-5/12" /> {/* Spacer */}
-      <div className="z-20 order-1 flex h-8 w-8 items-center rounded-full">
+    <div className={`mb-8 flex w-full items-center last:mb-0 ${className}`}>
+      <div className="z-20 ml-[calc(16.666%-1rem)] flex h-8 w-8 items-center rounded-full">
         <div
           className="flex h-full w-full items-center justify-center rounded-full"
           style={{ background: iconBackground, ...iconStyle }}
@@ -41,15 +38,10 @@ export const TimelineElement: React.FC<TimelineElementProps> = ({
           {icon || <span className="text-sm text-white">•</span>}
         </div>
       </div>
-      <div
-        className={`order-1 w-5/12 ${position === "right" ? "pr-8" : "pl-8"}`}
-      >
+      <div className="w-9/12 pl-8">
         <div
           className="animate-fadeIn rounded pb-4 pt-4 shadow-lg last:pb-0"
-          style={{
-            // background: "#1f2937",
-            ...contentStyle,
-          }}
+          style={{ ...contentStyle }}
         >
           {children}
         </div>
@@ -71,7 +63,7 @@ export const VerticalTimeline: React.FC<TimelineProps> = ({
         <div className="relative pb-4 pt-4 last:pb-0">
           {/* Vertical Line - now starts and ends with content */}
           <div
-            className="absolute left-1/2 top-8 -ml-px h-[calc(100%-2rem)] w-0.5"
+            className="absolute left-[16.666%] top-8 -ml-px h-[calc(100%-2rem)] w-0.5"
             style={{ background: lineColor }}
           />
 

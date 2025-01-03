@@ -50,7 +50,7 @@ function TransactionSummaryItem({
 }: TransactionSummaryItemProps) {
   return (
     <div className="w-full rounded-[10px] border-[1.5px] border-solid border-[#192134]">
-      <div className="flex w-full items-center justify-between rounded-t-[10px] bg-[#192134] px-7 py-3 text-xs font-medium capitalize">
+      <div className="flex w-full items-center justify-between rounded-t-[10px] bg-[#192134] px-[5%] py-3 text-xs font-medium capitalize lg:px-7">
         <span className="text-[#DCDCE4]">{date}</span>
         <span
           className={` ${
@@ -65,7 +65,7 @@ function TransactionSummaryItem({
         </span>
       </div>
 
-      <div className="flex items-center justify-between px-5 py-7">
+      <div className="flex items-center justify-between px-[5%] py-7 lg:px-5">
         <div>
           <TokenItem
             symbol={from.symbol}
@@ -100,7 +100,7 @@ const TokenItem = ({
   action: "from" | "to";
 }) => {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex flex-col gap-2 lg:flex-row lg:items-center">
       <TokenIcon symbol={symbol.toLowerCase()} variant="branded" size={36} />
 
       <div className="flex flex-col gap-2">

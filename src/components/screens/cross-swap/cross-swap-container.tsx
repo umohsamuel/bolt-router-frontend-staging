@@ -34,7 +34,7 @@ export default function CrossSwapContainer() {
   }, []);
 
   return (
-    <div className="flex w-full flex-col gap-10 rounded-xl bg-[#131A2A] p-10">
+    <div className="flex w-full flex-col gap-10 rounded-xl bg-[#131A2A] px-[5%] py-10 lg:p-10">
       <div className="flex w-full flex-col gap-4">
         <CrossSwapInput
           swapAction="from"

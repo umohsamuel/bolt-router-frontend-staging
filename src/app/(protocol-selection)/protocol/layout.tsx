@@ -19,7 +19,7 @@ export default function ProtocolSelectionLayout({
     >
       <Navbar mainBackgroundColor="#192134" className="" />
       <BaseSwitcher options={options} prePath="/protocol" />
-      <div className="flex w-full max-w-[656px]">{children}</div>
+      <div className="flex w-full max-w-[656px] px-[5%]">{children}</div>
     </div>
   );
 }

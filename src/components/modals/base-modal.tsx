@@ -52,7 +52,7 @@ export default function BaseModal({
     >
       <div
         ref={modalRef}
-        className="flex max-h-[90%] w-full max-w-[656px] flex-col gap-5 rounded-xl bg-[#131A2A] px-10 py-[30px]"
+        className="flex max-h-[90%] w-full max-w-[656px] flex-col gap-5 rounded-xl bg-[#131A2A] px-[5%] py-[30px] lg:px-10"
       >
         <div className="flex items-center justify-between">
           <h1 className="text-base font-semibold text-[#DCDCE4]">{title}</h1>

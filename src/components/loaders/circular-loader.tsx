@@ -13,7 +13,7 @@ export default function PageCircularLoader({
   className,
 }: PageCircularLoaderProps) {
   return (
-    <div className="my-4 flex w-full items-center justify-center">
+    <div className="my-4 flex h-screen w-full items-center justify-center">
       <LoaderCircle
         size={size}
         color={color}

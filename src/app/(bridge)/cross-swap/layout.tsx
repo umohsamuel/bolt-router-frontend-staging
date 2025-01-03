@@ -18,16 +18,16 @@ export default function BridgeLayout({ children }: BridgeLayoutProps) {
       className="flex min-h-screen flex-col items-center bg-[#080A18]"
     >
       <Navbar mainBackgroundColor="#192134" className="" />
-      <div className="flex w-full justify-center pl-[5%] pr-[10%]">
+      <div className="flex w-full flex-col justify-center pl-[5%] pr-[5%] lg:flex-row">
         <div className="flex w-full max-w-[656px] flex-col items-start gap-[30px]">
-          <div className="flex w-full items-center justify-between">
+          <div className="flex w-full flex-col justify-between gap-4 lg:flex-row lg:items-center lg:gap-0">
             <BaseSwitcher options={options} prePath="/cross-swap" />
             <RecentTransactions />
           </div>
 
           {children}
         </div>
-        <div className="pt-24">
+        <div className="lg:pt-24">
           <CrossSwapTimeline />
         </div>
       </div>

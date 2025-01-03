@@ -26,7 +26,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${Oakes_Grotesk.variable} font-oakes-grotesk text-[#DCDCE4] antialiased`}
+        className={`${Oakes_Grotesk.variable} min-h-screen bg-[#080A18] font-oakes-grotesk text-[#DCDCE4] antialiased`}
       >
         <Toaster toastOptions={toastOptions} />
         <CrossSwapStoreProvider>

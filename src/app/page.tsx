@@ -1,24 +1,12 @@
-import { HomeLayout } from "@/components/layouts";
-import {
-  FeaturesHome,
-  GetStarted,
-  HeroHome,
-  IntroductionHome,
-  KeyMetricsHome,
-  ProtocolIntregration,
-  SupportedChains,
-} from "@/components/screens";
+import { PageCircularLoader } from "@/components/loaders";
+import { PageReRouter } from "@/components/router";
 
 export default function Home() {
   return (
-    <HomeLayout className="mb-8 flex flex-col gap-y-8 lg:mb-24 lg:gap-y-24">
-      <HeroHome />
-      <IntroductionHome />
-      <KeyMetricsHome />
-      <FeaturesHome />
-      <SupportedChains />
-      <ProtocolIntregration />
-      <GetStarted />
-    </HomeLayout>
+    <div className="flex w-full items-center justify-center">
+      <PageReRouter redirectPath="/protocol/stable">
+        <PageCircularLoader />
+      </PageReRouter>
+    </div>
   );
 }

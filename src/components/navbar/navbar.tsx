@@ -46,7 +46,7 @@ export default function Navbar({
               <Link
                 href={navlink.link}
                 key={navlink.title}
-                className={`hover:text-[#366CF0] ${pathname === navlink.link ? "text-[#366CF0]" : ""}`}
+                className={`hover:text-[#366CF0] ${pathname.startsWith(navlink.link) ? "text-[#366CF0]" : ""}`}
               >
                 {navlink.title}
               </Link>

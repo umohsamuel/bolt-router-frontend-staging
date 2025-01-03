@@ -33,7 +33,7 @@ export default function CrossSwapTimeline() {
               {step.title}
             </h3>
             {currentStep === index + 1 && (
-              <ul className="mt-4 flex list-disc flex-col items-center gap-2 text-[10px] font-normal text-[#9B9B9B]">
+              <ul className="mt-4 flex list-disc flex-col gap-2 text-[10px] font-normal text-[#9B9B9B]">
                 <li>Minimum Crosschain Amount is 0.08 BNB</li>
                 <li>Maximum Crosschain Amount is 12,000 BNB</li>
                 <li>Estimated Time of Crosschain Arrival is 10–30 min </li>
