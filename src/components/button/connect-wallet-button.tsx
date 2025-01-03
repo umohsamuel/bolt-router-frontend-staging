@@ -65,7 +65,11 @@ export default function ConnectWalletBtn({
       <BaseButton
         text={text}
         className={className}
-        onClick={async () => await open()}
+        onClick={async () =>
+          await open({
+            view: "Connect",
+          })
+        }
         isLoading={
           typeof connector === "undefined"
             ? false
