@@ -6,18 +6,31 @@ import { useAppKitAccount } from "@reown/appkit/react";
 import { useCallback, useState } from "react";
 import CrossSwapInput from "./cross-swap-input-item";
 import Image from "next/image";
+import { TransactionSummaryModal } from "@/components/modals";
+
+const MIN = 1;
+const MAX = 4;
 
 export default function CrossSwapContainer() {
   const { isConnected, status } = useAppKitAccount();
+  const timelineStep = useCrossSwapStore((state) => state.timelineStep);
   const setTimelineStep = useCrossSwapStore((state) => state.setCrossSwapStore);
+  const [openTransactionSummary, setOpenTransactionSummary] =
+    useState<boolean>(false);
 
   const [fromAmount, setFromAmount] = useState<number>(0.0);
   const [toAmount, setToAmount] = useState<number>(0.0);
 
   const handleNextStep = useCallback(() => {
-    const MIN = 1;
-    const MAX = 5;
-    setTimelineStep("timelineStep", (prev) => (prev >= MAX ? MIN : prev + 1));
+    if (timelineStep === MAX) {
+      setOpenTransactionSummary(true);
+    } else {
+      setTimelineStep("timelineStep", (prev) => (prev >= MAX ? MIN : prev + 1));
+    }
+  }, [timelineStep]);
+
+  const handleReset = useCallback(() => {
+    setTimelineStep("timelineStep", MIN);
   }, []);
 
   return (
@@ -53,6 +66,12 @@ export default function CrossSwapContainer() {
       ) : (
         <ConnectWalletBtn className="w-full" />
       )}
+
+      <TransactionSummaryModal
+        isOpen={openTransactionSummary}
+        setIsOpen={setOpenTransactionSummary}
+        onClose={handleReset}
+      />
     </div>
   );
 }

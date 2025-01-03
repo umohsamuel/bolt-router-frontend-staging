@@ -2,10 +2,10 @@
 
 import { wagmiAdapter, projectId } from "@/config";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { createAppKit } from "@reown/appkit/react";
+import { createAppKit, useDisconnect } from "@reown/appkit/react";
 import { mainnet, arbitrum } from "@reown/appkit/networks";
-import React, { type ReactNode } from "react";
-import { cookieToInitialState, WagmiProvider, type Config } from "wagmi";
+import React, { useEffect, type ReactNode } from "react";
+import { WagmiProvider, type Config } from "wagmi";
 // import { ClientOnly } from "@/components/layouts";
 
 const queryClient = new QueryClient();
@@ -40,16 +40,31 @@ function WagmiContextProvider({
   children: ReactNode;
   cookies: string | null;
 }) {
-  const initialState = cookieToInitialState(
-    wagmiAdapter.wagmiConfig as Config
-    // cookies
-  );
+  // const initialState = cookieToInitialState(
+  //   wagmiAdapter.wagmiConfig as Config
+  //   // cookies
+  // );
+
+  const { disconnect } = useDisconnect();
+
+  async function handleDisconnect() {
+    await disconnect();
+  }
+
+  useEffect(() => {
+    if (
+      typeof wagmiAdapter.wagmiConfig.connectors === "undefined" ||
+      wagmiAdapter.wagmiConfig.connectors.length === 0
+    ) {
+      handleDisconnect();
+    }
+  }, [wagmiAdapter.wagmiConfig.connectors]);
 
   return (
     // <ClientOnly>
     <WagmiProvider
       config={wagmiAdapter.wagmiConfig as Config}
-      initialState={initialState}
+      // initialState={initialState}
     >
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </WagmiProvider>

@@ -3,9 +3,15 @@
 import { useCrossSwapStore } from "@/zustand/providers";
 import { TimelineElement, VerticalTimeline } from "./base-timeline";
 import { crossSwapSteps } from "@/lib";
+import { useEffect } from "react";
 
 export default function CrossSwapTimeline() {
   const currentStep = useCrossSwapStore((state) => state.timelineStep);
+  const setCurrentStep = useCrossSwapStore((state) => state.setTimelineStep);
+
+  useEffect(() => {
+    setCurrentStep(1);
+  }, []);
 
   return (
     <div>

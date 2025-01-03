@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { NavScrollWrapper } from "./navWrappers";
 import { navLinks } from "@/lib";
 import { ConnectWalletBtn } from "../button";
 import { ChainItem } from "./chain-item";
 import { cn } from "@/utils";
 import { usePathname } from "next/navigation";
+import { NavScrollWrapper } from "./navWrappers";
 
 interface NavbarProps {
   className?: Readonly<string>;

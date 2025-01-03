@@ -1,13 +1,14 @@
 "use client";
 
-import { BaseModal } from "@/components/modals";
+import { RecentTransactionsModal } from "@/components/modals";
 import { useState } from "react";
 
 export default function RecentTransactions() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [openRecentTransactionsModal, setOpenRecentTransactionsModal] =
+    useState(false);
 
   function openModal() {
-    setIsOpen(true);
+    setOpenRecentTransactionsModal(true);
   }
 
   return (
@@ -17,13 +18,10 @@ export default function RecentTransactions() {
         Transactions
       </button>
 
-      <BaseModal
-        title="Transaction History"
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-      >
-        <div>hellow world</div>
-      </BaseModal>
+      <RecentTransactionsModal
+        isOpen={openRecentTransactionsModal}
+        setIsOpen={setOpenRecentTransactionsModal}
+      />
     </div>
   );
 }

@@ -8,6 +8,7 @@ import { useEffect, useRef } from "react";
 interface BaseModalProps extends ModalProps {
   children: Readonly<React.ReactNode>;
   title?: Readonly<string>;
+  onClose?: () => void;
 }
 
 export default function BaseModal({
@@ -15,16 +16,18 @@ export default function BaseModal({
   isOpen,
   setIsOpen,
   children,
+  onClose,
 }: BaseModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
 
   function handleClickOutside(e: React.MouseEvent) {
     if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-      setIsOpen(false);
+      close();
     }
   }
 
   function close() {
+    if (onClose) onClose();
     setIsOpen(false);
   }
 

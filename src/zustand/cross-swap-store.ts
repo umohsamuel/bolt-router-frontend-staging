@@ -6,6 +6,7 @@ export type CrossSwapState = {
 }
 
 export type CrossSwapActions = {
+  setTimelineStep: (value: number) => void;
  setCrossSwapStore: <K extends keyof CrossSwapState>(
   field: K,
   valueOrUpdater: CrossSwapState[K] | ((prev: CrossSwapState[K]) => CrossSwapState[K])
@@ -27,6 +28,7 @@ export const createCrossSwapStore = (
 ) => {
   return createStore<CrossSwapStore>()(persist((set) => ({
     ...initState,
+    setTimelineStep: (value) => set({ timelineStep: value }),
     setCrossSwapStore: (field, valueOrUpdater) => set((state) => ({
      [field]: typeof valueOrUpdater === 'function'
        ? valueOrUpdater(state[field])
