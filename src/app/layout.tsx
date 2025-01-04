@@ -28,7 +28,7 @@ export default async function RootLayout({
       <body
         className={`${Oakes_Grotesk.variable} min-h-screen bg-[#080A18] font-oakes-grotesk text-[#DCDCE4] antialiased`}
       >
-        <Toaster position="top-right" toastOptions={toastOptions} />
+        <Toaster toastOptions={toastOptions} />
         <CrossSwapStoreProvider>
           <WagmiContextProvider cookies={cookies}>
             {children}
