@@ -60,7 +60,10 @@ function WagmiContextProvider({
     ) {
       handleDisconnect();
     }
-  }, [wagmiAdapter.wagmiConfig.connectors]);
+  }, [
+    wagmiAdapter.wagmiConfig.connectors,
+    wagmiAdapter.wagmiConfig.state.status,
+  ]);
 
   return (
     // <ClientOnly>
