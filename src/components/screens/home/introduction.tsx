@@ -1,16 +1,35 @@
-import Image from "next/image";
+import { routes } from "@/lib/routes";
 import { PageMainHeader, PageMainSubHeader } from "./home-headers";
+import { BaseButton } from "@/components/button";
 
 export default function IntroductionHome() {
   return (
-    <div className="px-[5%]">
+    <div className="mx-auto w-full max-w-screen-large-max px-[5%] pt-24 large-max:px-0">
       <PageMainSubHeader
         content="Introducing Bolt Router"
         className="mb-4 lg:mb-7"
       />
-      <PageMainHeader content="Decentralized Cross-Chain Infrastructure" />
+      <PageMainHeader
+        content="The Premier Cross-Chain Bridge for Stablecoins & Assets Up to 100x Liquidity"
+        className="lg:text-[48px] lg:leading-[70px] 2xl:text-[48px]"
+      />
 
-      <div className="my-6 flex flex-col items-center justify-between gap-8 lg:my-14 lg:flex-row lg:gap-0">
+      <div className="mx-auto mt-4 flex max-w-screen-small-max flex-col items-center text-center">
+        <p className="text-xl font-normal text-[#CDCDCD]">
+          The Blue-Chip Cross-Chain Bridge for Stablecoins and Digital
+          AssetsExperience Seamless, High-Efficiency Asset Transfers with Up to
+          100x Concentrated Liquidity, Ensuring Faster, Cost-Effective, and
+          Secure Cross-Chain Transactions Across Multiple Blockchains.
+        </p>
+
+        <BaseButton
+          text="Trade Now"
+          className="mt-7 px-20 py-6 text-2xl font-bold"
+          link={routes.protocol.base}
+        />
+      </div>
+
+      {/* <div className="my-6 flex flex-col items-center justify-between gap-8 lg:my-14 lg:flex-row lg:gap-0">
         <div className="w-full space-y-6 text-base font-normal text-[#CDCDCD] lg:max-w-[45%] lg:text-xl">
           <p>
             This platform is a Decentralized Exchange (DEX) designed to make
@@ -39,7 +58,7 @@ export default function IntroductionHome() {
             draggable={false}
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

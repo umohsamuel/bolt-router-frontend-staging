@@ -2,7 +2,7 @@ import { PageMainHeader, PageMainSubHeader } from "./home-headers";
 
 export default function KeyMetricsHome() {
   return (
-    <div className="my-12 px-[5%]">
+    <div className="large-max:px-0 max-w-screen-large-max mx-auto my-12 w-full px-[5%]">
       <PageMainSubHeader content="bolt router Key Metrics" />
       <PageMainHeader content="Network Statistics" className="mb-4 mt-8" />
 
@@ -11,11 +11,11 @@ export default function KeyMetricsHome() {
           <div key={metric.title} className="flex flex-col gap-3">
             <PageMainSubHeader
               content={metric.title}
-              className="text-left lg:text-xs"
+              className="text-left font-medium tracking-wide lg:text-xs"
             />
             <PageMainHeader
               content={metric.value}
-              className="text-left font-normal leading-tight lg:text-[40px]"
+              className="text-left font-normal leading-tight lg:text-[40px] 2xl:text-[40px]"
             />
           </div>
         ))}

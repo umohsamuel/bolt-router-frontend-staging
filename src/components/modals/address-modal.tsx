@@ -6,11 +6,17 @@ import { copyToClipboard, formatWalletAddress } from "@/utils";
 import { LucideIcon, SquareArrowOutUpRight, Copy } from "lucide-react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { routes } from "@/lib/routes";
+import { useProtocolStore } from "@/zustand/providers";
+import { initProtocol } from "@/lib/protocol";
 
 export default function AddressDetailsModal({ isOpen, setIsOpen }: ModalProps) {
   const { disconnect } = useDisconnect();
   const { address } = useAccount();
   const router = useRouter();
+  const setSelectedProtocol = useProtocolStore(
+    (state) => state.setSelectedProtocol
+  );
 
   const bscScanUrl = `https://bscscan.com/address/${address}`;
 
@@ -53,8 +59,9 @@ export default function AddressDetailsModal({ isOpen, setIsOpen }: ModalProps) {
         <button
           onClick={async () => {
             await disconnect();
+            setSelectedProtocol(initProtocol);
             setIsOpen(false);
-            router.push("/");
+            router.push(routes.home);
           }}
           className="rounded-md border border-solid border-[#E03232] py-2 text-sm font-normal text-[#E03232]"
         >

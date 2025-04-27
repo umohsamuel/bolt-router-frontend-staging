@@ -4,7 +4,7 @@ import { Oakes_Grotesk } from "@/fonts";
 import { Toaster } from "react-hot-toast";
 import { WagmiContextProvider } from "@/context";
 import { headers } from "next/headers";
-import { CrossSwapStoreProvider } from "@/zustand/providers";
+import { ZustandProvider } from "@/zustand/providers";
 import { toastOptions } from "@/consts";
 
 export const metadata: Metadata = {
@@ -29,11 +29,11 @@ export default async function RootLayout({
         className={`${Oakes_Grotesk.variable} min-h-screen bg-[#080A18] font-oakes-grotesk text-[#DCDCE4] antialiased`}
       >
         <Toaster toastOptions={toastOptions} />
-        <CrossSwapStoreProvider>
+        <ZustandProvider>
           <WagmiContextProvider cookies={cookies}>
             {children}
           </WagmiContextProvider>
-        </CrossSwapStoreProvider>
+        </ZustandProvider>
       </body>
     </html>
   );

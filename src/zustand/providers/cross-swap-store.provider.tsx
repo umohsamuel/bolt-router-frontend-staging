@@ -7,7 +7,7 @@ import {
   type CrossSwapStore,
   createCrossSwapStore,
   initCrossSwapStore,
-} from "../cross-swap-store";
+} from "../store/cross-swap.store";
 
 export type CrossSwapStoreApi = ReturnType<typeof createCrossSwapStore>;
 

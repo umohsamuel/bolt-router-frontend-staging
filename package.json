@@ -50,6 +50,12 @@
       "@types/react": "19.0.2",
       "@types/react-dom": "19.0.2",
       "lit": "3.1.0"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "bufferutil",
+      "keccak",
+      "sharp",
+      "utf-8-validate"
+    ]
   }
 }

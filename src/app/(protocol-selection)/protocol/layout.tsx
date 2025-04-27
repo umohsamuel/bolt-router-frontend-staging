@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/navbar";
 import { BaseSwitcher } from "@/components/switcher";
 import { navbarHeight } from "@/consts";
+import { routes } from "@/lib/routes";
 
 interface ProtocolSelectionLayoutProps {
   children: Readonly<React.ReactNode>;
@@ -18,8 +19,10 @@ export default function ProtocolSelectionLayout({
       className="flex min-h-screen flex-col items-center gap-10 bg-[#080A18]"
     >
       <Navbar mainBackgroundColor="#192134" className="" />
-      <BaseSwitcher options={options} prePath="/protocol" />
-      <div className="flex w-full max-w-[656px] px-[5%]">{children}</div>
+      <div className="mx-auto flex w-full max-w-screen-large-max flex-col items-center gap-10 px-[5%] large-max:px-0">
+        <BaseSwitcher options={options} prePath={routes.protocol.base} />
+        <div className="flex w-full max-w-[656px] px-[5%]">{children}</div>
+      </div>
     </div>
   );
 }

@@ -3,11 +3,11 @@ import { PageMainHeader, PageMainSubHeader } from "./home-headers";
 
 export default function FeaturesHome() {
   return (
-    <div className="mt-8 px-[5%]">
+    <div className="large-max:px-0 max-w-screen-large-max mx-auto mt-8 w-full px-[5%]">
       <PageMainSubHeader content="Core Protocol Features" />
       <PageMainHeader
         content="Unlock Limitless Possibilities with Bolt Router"
-        className="mb-4 mt-4 lg:mt-8"
+        className="mb-4 mt-4 lg:mt-8 2xl:text-5xl"
       />
       <p className="text-center text-lg font-normal text-[#CDCDCD]">
         Experience Seamless and Secure Cross-Chain Token Swaps

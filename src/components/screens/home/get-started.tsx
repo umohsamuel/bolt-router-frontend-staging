@@ -3,7 +3,7 @@ import { cn } from "@/utils";
 
 export default function GetStarted() {
   return (
-    <div className="flex flex-col items-center px-[5%] text-[#CDCDCD]">
+    <div className="max-w-screen-large-max large-max:px-0 mx-auto flex w-full flex-col items-center px-[5%] text-[#CDCDCD]">
       <h1 className="text-center text-3xl font-semibold text-[#CDCDCD] lg:text-5xl">
         Get started now
       </h1>
@@ -52,7 +52,8 @@ const StartedItem = ({
       <BaseButton
         text={linkLabel}
         link={link}
-        className="mt-5 w-fit rounded-lg bg-[#192134] px-7 py-2 text-lg font-medium text-[#CDCDCD] lg:px-7 lg:py-2 lg:text-lg"
+        isGradient={false}
+        className="mt-5 w-fit rounded-lg bg-[#192134] px-7 py-2 text-lg font-medium text-[#CDCDCD] shadow-lg lg:px-7 lg:py-2 lg:text-lg"
       />
     </div>
   );

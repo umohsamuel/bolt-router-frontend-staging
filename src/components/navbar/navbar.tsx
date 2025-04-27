@@ -4,10 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { navLinks } from "@/lib";
 import { ConnectWalletBtn } from "../button";
-import { ChainItem } from "./chain-item";
+import { ProtocolSelector } from "./chain-item";
 import { cn } from "@/utils";
 import { usePathname } from "next/navigation";
 import { NavScrollWrapper } from "./navWrappers";
+import { routes } from "@/lib/routes";
 
 interface NavbarProps {
   className?: Readonly<string>;
@@ -29,7 +30,7 @@ export default function Navbar({
         )}
       >
         <div>
-          <Link href="/">
+          <Link href={routes.home}>
             <Image
               src="/images/bolt-router-logo.svg"
               alt="bolt-router-logo"
@@ -52,11 +53,8 @@ export default function Navbar({
               </Link>
             ))}
           </div>
-          <ChainItem
-            logoURL="/images/favicon.svg"
-            name="BNB Chain"
-            className="hidden lg:flex"
-          />
+
+          <ProtocolSelector className="hidden lg:flex" />
 
           <ConnectWalletBtn className="hidden lg:flex" />
         </div>

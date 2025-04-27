@@ -6,4 +6,5 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   className?: Readonly<string>;
   isLoading?: Readonly<boolean>;
   loader?: Readonly<React.ReactNode>;
+  isGradient?: Readonly<boolean>;
 }

@@ -3,8 +3,8 @@ import Marquee from "react-fast-marquee";
 
 export default function SupportedChains() {
   return (
-    <div className="my-20 flex flex-col gap-6 px-[5%]">
-      <h1 className="text-center text-[22px] font-medium leading-tight text-[##DCDCE4]">
+    <div className="my-20 flex flex-col gap-6">
+      <h1 className="large-max:px-0 max-w-screen-large-max mx-auto w-full px-[5%] text-center text-[22px] font-medium leading-tight text-[##DCDCE4]">
         Supported chains
       </h1>
       <Marquee autoFill={true} pauseOnHover={true} pauseOnClick={true}>

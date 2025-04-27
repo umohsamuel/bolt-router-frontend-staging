@@ -1,4 +1,5 @@
 import { SelectProtocol } from "@/components/screens/protocol";
+import { protocols } from "@/lib/protocol";
 import Link from "next/link";
 
 export default function StableAssets() {
@@ -22,10 +23,3 @@ export default function StableAssets() {
     </div>
   );
 }
-
-const protocols = [
-  { name: "AXELAR", icon: "/images/favicon.svg" },
-  { name: "COSMOS", icon: "/images/favicon.svg" },
-  { name: "POLKADOT", icon: "/images/favicon.svg" },
-  { name: "TERRA", icon: "/images/favicon.svg" },
-];

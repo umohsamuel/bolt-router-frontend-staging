@@ -5,7 +5,7 @@ import { footerLinksArr, socialMediaLinks } from "@/lib";
 
 export default function Footer() {
   return (
-    <footer className="relative z-[1] px-[5%] py-8 text-[#CDCDCD]">
+    <footer className="max-w-screen-large-max large-max:px-0 relative z-[1] mx-auto w-full px-[5%] py-8 text-[#CDCDCD]">
       <div className="flex w-full flex-col justify-between gap-10 lg:flex-row lg:gap-0">
         <div className="flex flex-col items-start gap-4 lg:max-w-[30%]">
           <h1 className="text-[32px] font-semibold leading-tight text-[#DCDCE4]">
@@ -58,14 +58,16 @@ interface FooterLinkItemProps {
 const FooterLinkItem: FC<FooterLinkItemProps> = ({ title, links }) => {
   return (
     <div className="flex flex-col gap-5">
-      <h3 className="text-2xl font-medium text-[#DCDCE4]">{title}</h3>
+      <h3 className="text-xl font-medium text-[#DCDCE4] 2xl:text-2xl">
+        {title}
+      </h3>
       <div className="flex flex-col gap-5">
         {links.map((link) => (
           <Link
             key={link.linkTitle}
             aria-disabled={link.linkUrl === ""}
             href={link.linkUrl}
-            className={`text-base font-normal text-[#CDCDCD]`}
+            className={`text-sm font-normal text-[#CDCDCD] 2xl:text-base`}
           >
             {link.linkTitle}
           </Link>

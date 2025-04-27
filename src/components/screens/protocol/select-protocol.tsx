@@ -3,7 +3,8 @@
 import Link from "next/link";
 import ProtocolItem from "./protocol-item";
 import { redirect } from "next/navigation";
-import { useState } from "react";
+import { useProtocolStore } from "@/zustand/providers";
+import { routes } from "@/lib/routes";
 
 interface SelectProtocolProps {
   postSelectInfo?: Readonly<React.ReactNode>;
@@ -17,7 +18,10 @@ export default function SelectProtocol({
   postSelectInfo,
   protocols,
 }: SelectProtocolProps) {
-  const [selectedProtocol, setSelectedProtocol] = useState<string | null>(null);
+  const selectedProtocol = useProtocolStore((state) => state.selectedProtocol);
+  const setSelectedProtocol = useProtocolStore(
+    (state) => state.setSelectedProtocol
+  );
 
   return (
     <div className="w-full space-y-[30px] text-[#CDCDCD]">
@@ -30,10 +34,11 @@ export default function SelectProtocol({
               icon={protocol.icon}
               name={protocol.name}
               onClick={async () => {
-                setSelectedProtocol(protocol.name);
-                redirect("/cross-swap/stable");
+                setSelectedProtocol(protocol);
+
+                redirect(routes.crossSwap.stable);
               }}
-              isSelected={selectedProtocol === protocol.name}
+              isSelected={selectedProtocol.name === protocol.name}
             />
           ))}
         </div>

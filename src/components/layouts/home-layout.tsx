@@ -1,6 +1,5 @@
 import { Navbar } from "../navbar";
 import { Footer } from "../footer";
-import { HorizontalDivider } from "../dividers";
 import { cn } from "@/utils";
 
 export default function HomeLayout({
@@ -8,10 +7,9 @@ export default function HomeLayout({
   className,
 }: Readonly<{ children: React.ReactNode; className?: string }>) {
   return (
-    <div className="bg-gradient-to-b from-[#080A18]/[0%] to-[#080A18] to-45%">
+    <div className="bg-gradient-to-b from-[#080A1800] to-[#080A18] to-45%">
       <Navbar />
       <div className={cn(`min-h-screen`, className)}>{children}</div>
-      <HorizontalDivider />
       <Footer />
     </div>
   );
